@@ -1,6 +1,6 @@
 /*
 Projet 2022, Programmation Impérative
-Par Lylian DENISET & Valentin GUILLON, Groupe L1-Y
+Par Lylian DENISET (21001107) & Valentin GUILLON (20002588), Groupe L1-Y
 Programme : All Queens Chess
 */
 
