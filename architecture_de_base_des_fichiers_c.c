@@ -9,10 +9,10 @@ Programme : All Queens Chess
 
 #define TAILLE 5
 
-typedef struct Position {
+typedef struct position {
     int x;
     int y;
-}position;
+}Position;
 
 
 /*---------------------------------*/
