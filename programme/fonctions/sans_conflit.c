@@ -126,6 +126,7 @@ int sans_conflit(Position origin, Position dest, int *chessboard) {
         printf("------------distance = %d %d\n\n", distance.x, distance.y);
         */
     }
+        //non alignés
     else {
         //printf("------------non-alignés\n");
         return 0;
