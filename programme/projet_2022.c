@@ -45,7 +45,7 @@ Position take_queen(int *); //NON FAIT---------------------------------------
 //reçoit une position de départ et d'arrivée, et un tableau, à 2 dimension, d'entiers
 //détermine si la position est autorisé
 //retourne 0 si le déplacement est possible, sinon 1
-int sans_conflit(Position, Position, int *); //NON FAIT----------------------
+int sans_conflit(Position, Position, int *);
 
 //reçoit un tableau, à 2 dimension, d'entiers
 //vérifie si 4 même reines reine sont alignées
