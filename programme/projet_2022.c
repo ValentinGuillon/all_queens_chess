@@ -31,6 +31,7 @@ void lire_chessboard(FILE *, int *); //NON FAIT------------------------------
 //reçoit un fichier, et un tableau 2D
 //écris dans le fichier, l'état actuel du tableau
 void ecrire_chessboard(FILE *, int *); //NON FAIT----------------------------
+
 //reçoit unt tableau à 2D et le numéro du joueur dont c'est le tour
 //demander une position au joueur, jusqu'à se qu'elle soit valide
 //retourne cette position
