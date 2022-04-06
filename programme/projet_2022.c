@@ -5,6 +5,7 @@ Programme : All Queens Chess
 */
 
 #include <stdio.h>
+#include <stdlib.h> //type FILE, and files fonctions
 
 #define TAILLE 5
 
