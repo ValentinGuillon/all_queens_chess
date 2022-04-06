@@ -5,6 +5,14 @@ Programme : All Queens Chess
 */
 
 #include <stdio.h>
+#include <stdlib.h> //type FILE, and files fonctions
+
+#define TAILLE 5
+
+typedef struct Position {
+    int x;
+    int y;
+}position;
 
 
 /*---------------------------------*/
