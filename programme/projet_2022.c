@@ -8,10 +8,10 @@ Programme : All Queens Chess
 
 #define TAILLE 5
 
-typedef struct Position {
+typedef struct position {
     int x;
     int y;
-}position;
+}Position;
 
 
 /*---------------------------------*/
@@ -19,22 +19,33 @@ typedef struct Position {
 /*----------FONCTIONS--------------*/
 /*---------------------------------*/
 
-//reçoit un tableau, à 2 dimension, d'entiers
-//affiche l'état actuelle du plateau
+//reçoit un tableau 2D
+//affiche l'état actuelle du plateau dans le terminal
 void afficher_chessboard(int *);
 
-//reçoit un fichier, et un tableau, à 2 dimension, d'entiers
+//reçoit un fichier, et un tableau 2D
 //remplis le tableau, en fonction du fichier
 void lire_chessboard(FILE *, int *);
 
-//reçoit un fichier, et un tableau, à 2 dimension, d'entiers
+//reçoit un fichier, et un tableau 2D
 //écris dans le fichier, l'état actuel du tableau
 void ecrire_chessboard(FILE *, int *);
+
+//reçoit unt tableau à 2D et le numéro du joueur dont c'est le tour
+//demander une position au joueur, jusqu'à se qu'elle soit valide
+//retourne cette position
+Position choose_queen(int *, int);
+
+//reçoit unt tableau à 2D
+//demander une position au joueur, jusqu'à se qu'elle soit valide
+//retourne cette position
+Position take_queen(int *);
+
 
 //reçoit une position de départ et d'arrivée, et un tableau, à 2 dimension, d'entiers
 //détermine si la position est autorisé
 //retourne 0 si le déplacement est possible, sinon 1
-int sans_conflit(position, position, int *);
+int sans_conflit(Position, Position, int *);
 
 //reçoit un tableau, à 2 dimension, d'entiers
 //vérifie si 4 même reines reine sont alignées
