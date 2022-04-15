@@ -23,7 +23,7 @@ typedef struct position {
 //reçoit un tableau, à 2 dimension, d'entiers
 //vérifie si 4 même reines reine sont alignées
 //retourne 1 si les 4 reines sont celles du joueur 1, retourne 2 pour le joueur 2, sinon 0;
-int winning(int *); //NON FAIT----------------------------------------------
+int winning(int *chessboard);
 
 
 

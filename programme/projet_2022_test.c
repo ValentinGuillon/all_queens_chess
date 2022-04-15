@@ -274,12 +274,19 @@ int main(void) {
 /*----------FONCTIONS--------------*/
 /*---------------------------------*/
 
+    // \033[31mR\033[0m   Permet de colorer les R en rouge
+    // \033[34mN\033[0m   Permet de colorer les N en bleu
+//  R \033[31mR\033[0m
+//  N \033[34mN\033[0m
+
 
 void afficher_chessboard(int *chessboard, Position chosen, int player) {
-    int i, j; //i = abscisse, j = ordonnée
-    int queen;
+    // \033[31mR\033[0m   Permet de colorer les R en rouge
+    // \033[34mN\033[0m   Permet de colorer les N en bleu
 
-    
+    int i, j; //i = abscisse, j = ordonnée
+    int queen; //reine observée. Soit 0, 1 ou 2
+
 
 
     printf("\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -287,12 +294,12 @@ void afficher_chessboard(int *chessboard, Position chosen, int player) {
     switch (player) {
         case 1:
             printf("                -----         \n");    
-            printf("               |  R  |    N   \n");
+            printf("               |  \033[31mR\033[0m  |    N   \n");
             printf("                -----         \n");    
             break;
         case 2:
             printf("                        ----- \n");    
-            printf("                  R    |  N  |\n");
+            printf("                  R    |  \033[34mN\033[0m  |\n");
             printf("                        ----- \n");  
             break;
     }
@@ -322,10 +329,10 @@ void afficher_chessboard(int *chessboard, Position chosen, int player) {
                     printf(" ");
                     break;
                 case 1:
-                    printf("R");
+                    printf("\033[31mR\033[0m");
                     break;
                 case 2:
-                    printf("N");
+                    printf("\033[34mN\033[0m");
                     break;
             }
 
@@ -363,6 +370,7 @@ int lire_chessboard(FILE *fichier, int *chessboard) {
     actual = '\n';
     
     do {
+        //si le char n'est ni un saut à ligne ni la fin du fichier
         if (actual != '\n' && actual != EOF) {
             if (actual == 'r') {
                 player = 1;
@@ -408,7 +416,12 @@ void ecrire_chessboard(FILE *fichier, int *chessboard, int player) {
 }
 
 Position choose_queen(int *chessboard, int player) {
-    int input; //permet de savoir si un input a déjà été donné, afin d'afficher un message d'erreur
+    // \033[31mR\033[0m   Permet de colorer les R en rouge
+    // \033[34mN\033[0m   Permet de colorer les N en bleu
+    //  R \033[31mR\033[0m
+    //  N \033[34mN\033[0m
+
+    int input; //permet de savoir si un input a déjà été donné, afin de pouvoir afficher un message d'erreur
     Position chosen;
     Position pos_null;
     pos_null.x = -1;
@@ -418,11 +431,11 @@ Position choose_queen(int *chessboard, int player) {
 
     switch (player) {
         case 1:
-            printf("Joueur R");
+            printf("Joueur \033[31mR\033[0m");
             break;
 
         case 2:
-            printf("Joueur N");
+            printf("Joueur \033[34mN\033[0m");
             break;
     }
     

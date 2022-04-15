@@ -42,7 +42,7 @@ int main(void) {
     
     int player = 0;
 
-    printf("\n>");
+    printf("player = ");
     scanf("%d", &player);
 
     FILE *fichier = NULL;

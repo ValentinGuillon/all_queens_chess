@@ -24,7 +24,7 @@ typedef struct position {
 //reçoit une position de départ et d'arrivée, et un tableau, à 2 dimension, d'entiers
 //détermine si la position est autorisé
 //retourne 0 si le déplacement est possible, sinon 1
-int sans_conflit(Position, Position, int *);
+int sans_conflit(Position origin, Position dest, int *chessboard);
 
 
 
@@ -92,43 +92,24 @@ int sans_conflit(Position origin, Position dest, int *chessboard) {
     //verif direction
         //horizontal
     if (origin.y == dest.y) {
-        //printf("------------c'est horizontal\n");
         dir = 'h';
         distance.x = dest.x - origin.x;
         distance.y = dest.y - origin.y;
-        /*
-        printf("------------origin = %d %d\n", origin.x, origin.y);
-        printf("------------dest = %d %d\n", dest.x, dest.y);
-        printf("------------distance = %d %d\n\n", distance.x, distance.y);
-        */
     }
         //vertical
     else if (origin.x == dest.x) {
-        //printf("------------c'est verticale\n");
         dir = 'v';
         distance.x = dest.x - origin.x;
         distance.y = dest.y - origin.y;
-        /*
-        printf("------------origin = %d %d\n", origin.x, origin.y);
-        printf("------------dest = %d %d\n", dest.x, dest.y);
-        printf("------------distance = %d %d\n\n", distance.x, distance.y);
-        */
     }
         //diagonal
     else if ((dest.x - origin.x) == (dest.y - origin.y) || (dest.x - origin.x) == -(dest.y - origin.y)) {
-        //printf("------------c'est diagonal\n");
         dir = 'd';
         distance.x = dest.x - origin.x;
         distance.y = dest.y - origin.y;
-        /*
-        printf("------------origin = %d %d\n", origin.x, origin.y);
-        printf("------------dest = %d %d\n", dest.x, dest.y);
-        printf("------------distance = %d %d\n\n", distance.x, distance.y);
-        */
     }
         //non alignés
     else {
-        //printf("------------non-alignés\n");
         return 0;
     }
 
@@ -162,59 +143,31 @@ int sans_conflit(Position origin, Position dest, int *chessboard) {
     switch (dir) {
         case 'h': //horizontal
             for (i = 1; i <= distance_x_adj; i++) {
-                //printf("------------position observée : [%d; %d]\n", origin.x + (i * adjust_x), origin.y);
-                //printf("------------pion observé : %d\n", *(chessboard + origin.x + (origin.y * TAILLE) + (i * adjust_x)));
                 if (*(chessboard + origin.x + (origin.y * TAILLE) + (i * adjust_x)) != 0) {
-                        //printf("------------reine trouvé en horizontall en [%d; %d]\n", origin.x + (i * adjust_x), origin.y);
                     return 0;
                 }
             }
             break;
         case 'v': //vertical
             for (i = 1; i <= distance_y_adj; i++) {
-                //printf("------------position observée : [%d; %d]\n", origin.x, origin.y + (i * adjust_y));
-                //printf("------------pion observé : %d\n", *(chessboard + origin.x + (origin.y * TAILLE) + ((i * TAILLE) * adjust_y)));
                 if (*(chessboard + origin.x + (origin.y * TAILLE) + ((i * TAILLE) * adjust_y)) != 0) {
-                        //printf("------------reine trouvé en verticall en [%d; %d]\n", origin.x, origin.y + (i * adjust_y));
                     return 0;
                 }
             }
             break;
         case 'd': //diagonal
             for (i = 1; i <= distance_y_adj; i++) {
-                //printf("------------position observée : [%d; %d]\n", origin.x + (i * adjust_x), origin.y + (i * adjust_y));
-                //printf("------------pion observé : %d\n", *(chessboard + origin.x + (origin.y * TAILLE) + (i * adjust_x) + ((i * TAILLE) * adjust_y)));
                 if (*(chessboard + origin.x + (origin.y * TAILLE) + (i * adjust_x) + ((i * TAILLE) * adjust_y)) != 0) {
-                        //printf("------------reine trouvé en diagonal en [%d; %d]\n", origin.x + (i * adjust_x), origin.y + (i * adjust_y));
                     return 0;
                 }
             }
             break;
         
         default:
-            //printf("------------default\n");
             return 0;
             break;
     }
     
     //aucune reine rencontrée
-    /*
-    switch (dir) {
-        case 'h':
-            printf("------------déplacement horizontal autorisé\n");
-            break;
-        case 'v':
-            printf("------------déplacement vertical autorisé\n");
-            break;
-        case 'd':
-            printf("------------déplacement diagonal autorisé\n");
-            break;
-        
-        default:
-            printf("------------erro\n");
-            break;
-    }
-    */
-
     return 1;
 }

@@ -24,7 +24,7 @@ typedef struct position {
 
 //reçoit un tableau 2D, et le joueur qui joue
 //affiche l'état actuelle du plateau dans le terminal
-void afficher_chessboard(int *, Position);
+void afficher_chessboard(int *chessboard, Position chosen, int player);
 
 
 
@@ -46,7 +46,7 @@ int main(void) {
     origin.x = 4;
     origin.y = 2;
 
-    afficher_chessboard(&chessboard[0][0], origin);
+    afficher_chessboard(&chessboard[0][0], origin, 1);
 
     return 0;
 }
@@ -57,15 +57,33 @@ int main(void) {
 /*----------FONCTIONS--------------*/
 /*---------------------------------*/
 
-void afficher_chessboard(int *chessboard, Position chosen) {
+void afficher_chessboard(int *chessboard, Position chosen, int player) {
     int i, j; //i = abscisse, j = ordonnée
     int queen;
 
+    
 
-    printf("\n\n\n\n");
-    printf("        -----------------------------\n");
+
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
+
+    switch (player) {
+        case 1:
+            printf("                -----         \n");    
+            printf("               |  R  |    N   \n");
+            printf("                -----         \n");    
+            break;
+        case 2:
+            printf("                        ----- \n");    
+            printf("                  R    |  N  |\n");
+            printf("                        ----- \n");  
+            break;
+    }
+
+
+
+    printf("        - - - - - - - - - - - - - - -\n");
     printf("       |  A     B     C     D     E  |\n");
-    printf("  ----- -----------------------------\n");
+    printf("  - - - -----------------------------\n");
     for (j = 0; j < TAILLE; j++) {
         printf(" |  %d  |", j + 1);
         for (i = 0; i < TAILLE; i++) {
@@ -104,10 +122,10 @@ void afficher_chessboard(int *chessboard, Position chosen) {
         }
         printf("\n");
         if (j != 4) {
-            printf(" |     |-----|-----|-----|-----|-----|\n");
+            printf("       |-----|-----|-----|-----|-----|\n");
         }
         else {
-            printf("  ----- -----------------------------\n");
+            printf("  - - - -----------------------------\n");
         }
         
     }
