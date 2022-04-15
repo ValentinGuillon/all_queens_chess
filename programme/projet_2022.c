@@ -85,7 +85,7 @@ int main(void) {
 
 
     
-    printf("\nSouhaitez-vous charger la partie sauvegardée ? (y/n)\n>");
+    printf("Souhaitez-vous charger la partie sauvegardée ? (y/n)\n>");
     do {
         scanf("%1s", &reload);
     } while (reload != 'y' && reload != 'n' && reload != '7');
@@ -163,7 +163,7 @@ int main(void) {
             int replace;
             afficher_chessboard(&chessboard[0][0], pos_origin, player);
             //changer de reine, ou changer sa destination
-            printf("Mouvement impossible. Replacer(1) ou changer(2) de reine?\n>");
+            printf("Mouvement impossible. Replacer(1) ou changer(2) de reine?\n\n>");
             do {
                 scanf("%d", &replace);
             } while (replace != 1 && replace != 2);
@@ -213,12 +213,12 @@ int main(void) {
             case 0:
                 switch (player) {
                     case 1:
-                        printf("Le Joueur R a abandonné la partie\n");
+                        printf("Le Joueur R a abandonné la partie...\n");
                         player = 2;
                         winner = player;
                         break;
                     case 2:
-                        printf("Le Joueur N a abandonné la partie\n");
+                        printf("Le Joueur N a abandonné la partie...\n");
                         player = 1;
                         winner = player;
                         break;
